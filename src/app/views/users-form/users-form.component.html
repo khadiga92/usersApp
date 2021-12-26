@@ -1,0 +1,49 @@
+<p>template-form works!</p>
+<form class="mt-5 container" #usersForm='ngForm' (ngSubmit)="onSubmit(usersForm.value)">
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input
+    type="text"
+    class="form-control"
+    id="username"
+    ngModel
+    name="username"
+    #username="ngModel"
+    required
+    minlength="2"
+    placeholder="Enter your username"
+    (change)="log(username)"
+    >
+    <div class="error d-flex justify-content-center"
+    *ngIf="username.touched && username.invalid" >
+      <div *ngIf="username.errors?.['required']">*UserName is required*</div>
+      <div *ngIf="username.errors?.['minlength']">
+        *FirstName minlength is
+        {{username.errors?.['minlength'].requiredLength}}... you have entered
+        {{username.errors?.['minlength'].actualLength}}
+        *
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="Email" class="form-label">Email</label>
+    <input
+    type="email"
+    class="form-control"
+    id="Email"
+    ngModel
+    name="email"
+    #email="ngModel"
+    required
+    email
+    placeholder="Enter your email"
+    (change)="log(email)"
+    >
+  <div class="error d-flex justify-content-center"
+    *ngIf="email.touched && email.invalid" >
+      <div *ngIf="email.errors?.['required']">*Email is required*</div>
+      <div *ngIf="email.errors?.['email']">*Email is invalid*</div>
+  </div>
+  </div>
+  <button type="submit" class="btn btn-primary mb-3" [disabled]="usersForm.invalid">Submit</button>
+</form>

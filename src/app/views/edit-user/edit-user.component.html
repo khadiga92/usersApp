@@ -1,0 +1,25 @@
+<p>edit-user works!</p>
+<form class="mt-5 container" #editForm='ngForm' (ngSubmit)='updateUser(editForm.value)'>
+  <div class="mb-3">
+    <label for="username" class="form-label">UserName</label>
+    <input
+    type="text"
+    class="form-control"
+    id="username"
+    name="username"
+    [(ngModel)]='users.username'
+    >
+  </div>
+  <div class="mb-3">
+    <label for="company" class="form-label">Companyname</label>
+    <input
+    type="text"
+    class="form-control"
+    id="company"
+    name="company"
+    [(ngModel)]='users.company.name'
+    >
+  </div>
+  <button type="submit" class="btn btn-primary mb-3">Submit</button>
+</form>
+
